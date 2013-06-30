@@ -44,19 +44,22 @@ set cinoptions=g0.5s,c0
 vnoremap < <gv
 vnoremap > >gv
 
-set nowritebackup
-set nobackup
-set noswapfile
+" Easy switch off the current search
+nnoremap <silent> <Leader>/ :nohlsearch<CR>
+
+set nowritebackup   " no backup file right before writing to disk
+set nobackup        " no backup file
+set noswapfile      " no swap file
 
 if has('gui_running')
-    set autochdir
+    set autochdir   " auto change the current working dictory to the current working file
 endif
 
+" Vundle {{{
 filetype off
 
 set runtimepath+=~/.vim/bundle/vundle/
 
-" Plugins
 call vundle#rc()
 
 Bundle 'Lokaltog/vim-easymotion'
@@ -76,3 +79,4 @@ set bg=dark
 colorscheme solarized
 
 filetype plugin indent on
+" }}} Vundle
