@@ -27,7 +27,7 @@ set showcmd             " show incomplete commands
 set cursorline          " highlight cursor line
 
 if exists('+colorcolumn')
-    set colorcolumn=80  " vertical line
+    set colorcolumn=81  " vertical line
 endif
 
 set incsearch           " highlight matches while typing
