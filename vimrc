@@ -48,6 +48,12 @@ set cinoptions=g0.5s,c0
 vnoremap < <gv
 vnoremap > >gv
 
+" sane movement with wrap turned on
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
 " easy switch off the current search
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
 
@@ -61,24 +67,29 @@ endif
 
 " Vundle {{{
 filetype off
-
 set runtimepath+=~/.vim/bundle/vundle/
-
 call vundle#rc()
 
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" my bundles
+Bundle 'scrooloose/nerdtree'
+Bundle 'techlivezheng/vim-plugin-minibufexpl'
+Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'ervandew/supertab'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'scrooloose/syntastic'
 
 Bundle 'tomtom/tcomment_vim'
 nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
 
+Bundle 'mattn/zencoding-vim'
+let g:user_zen_leader_key='<C-E>'
+
 Bundle 'altercation/vim-colors-solarized'
-if &t_Co > 255
-    let g:solarized_termcolors=256
-endif
+set t_Co=256
+let g:solarized_termcolors=256
 set bg=dark
 colorscheme solarized
 
