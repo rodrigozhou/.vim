@@ -99,7 +99,7 @@ Bundle 'mattn/zencoding-vim'
 let g:user_zen_leader_key='<C-E>'
 
 Bundle 'altercation/vim-colors-solarized'
-if &t_Co > 255
+if (&t_Co > 255 || has('gui_running'))
     let g:solarized_termcolors=256
     set bg=dark
     colorscheme solarized
