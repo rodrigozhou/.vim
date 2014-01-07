@@ -28,13 +28,13 @@ set showmatch           " show matching bracket
 set ruler               " show current cursor position
 set showcmd             " show incomplete commands
 set cursorline          " highlight cursor line
+set linebreak           " smart line break
 
 if exists('+colorcolumn')
     set colorcolumn=81  " vertical line
 endif
 
 set incsearch           " highlight matches while typing
-set hlsearch            " highlight search
 set ignorecase          " case insensitive during searches
 set smartcase           " be sensitive if there is capital letters
 
@@ -45,7 +45,7 @@ set tabstop=8           " width of <TAB> character
 set smarttab            " smarter tab levels
 set autoindent          " copy indentation of previous line
 set cindent             " C style indenting
-set cinoptions=g0.5s,c0
+set cinoptions+=g0.5s,h0.5s
 
 set nowritebackup       " no backup file right before writing to disk
 set nobackup            " no backup file
@@ -82,21 +82,24 @@ Bundle 'gmarik/vundle'
 
 " my bundles
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'ervandew/supertab'
 
-Bundle 'techlivezheng/vim-plugin-minibufexpl'
-cnoreabbrev mbd MBEbd
-cnoreabbrev mbw MBEbw
-cnoreabbrev mbun MBEbun
+" Bundle 'techlivezheng/vim-plugin-minibufexpl'
+" cnoreabbrev mbd MBEbd
+" cnoreabbrev mbw MBEbw
+" cnoreabbrev mbun MBEbun
 
 Bundle 'tomtom/tcomment_vim'
 nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
 
-Bundle 'mattn/zencoding-vim'
-let g:user_zen_leader_key='<C-E>'
+Bundle 'scrooloose/syntastic'
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'passive_filetypes': ['html'] }
+
+Bundle 'othree/html5.vim'
+Bundle 'mattn/emmet-vim'
 
 Bundle 'altercation/vim-colors-solarized'
 if (&t_Co > 255 || has('gui_running'))
