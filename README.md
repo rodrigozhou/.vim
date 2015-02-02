@@ -2,4 +2,4 @@
     ln -s ~/.vim/vimrc ~/.vimrc
     cd ~/.vim
     git submodule foreach git pull origin master
-    vim +BundleInstall!
+    vim +PluginInstall
