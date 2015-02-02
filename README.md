@@ -1,5 +1,4 @@
-    git clone --recursive https://github.com/rodrigozhou/.vim.git ~/.vim
-    ln -s ~/.vim/vimrc ~/.vimrc
-    cd ~/.vim
-    git submodule foreach git pull origin master
-    vim +PluginInstall
+# .vim
+
+## Installation
+    curl -s https://raw.githubusercontent.com/rodrigozhou/.vim/master/install | sh
