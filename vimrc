@@ -4,55 +4,56 @@
 "
 " https://github.com/rodrigozhou/.vim
 
-set nocompatible
+set nocompatible                " make vim vim
 set history=64
 set encoding=utf-8
+set clipboard=unnamed           " use OS clipboard
+set backspace=indent,eol,start  " avoid backspace problems
 
 if has('mouse')
-    set mouse=a
+    set mouse=a                 " enable mouse if available
 endif
 
 syntax enable
-set showmode            " show current mode
-set wildmenu            " command-line completion
+set showmode                    " show current mode
+set wildmenu                    " command-line completion
 set wildmode=longest,list,full
-set laststatus=2        " always show two status lines
-set splitbelow          " default horizontal split to below
-set splitright          " default vertical split to right
+set laststatus=2                " always show two status lines
+set splitbelow                  " default horizontal split to below
+set splitright                  " default vertical split to right
 
-" diff options
-set diffopt=filler,vertical
+set diffopt=filler,vertical     " diff options
 
-set number              " show line number
-set showmatch           " show matching bracket
-set ruler               " show current cursor position
-set showcmd             " show incomplete commands
-set cursorline          " highlight cursor line
-set linebreak           " smart line break
+set number                      " show line number
+set ruler                       " show current cursor position
+set showcmd                     " show incomplete commands
+set cursorline                  " highlight cursor line
+set linebreak                   " smart line break
+set showmatch                   " show matching bracket
 
 if exists('+colorcolumn')
-    set colorcolumn=81  " vertical line
+    set colorcolumn=81          " vertical line
 endif
 
-set incsearch           " highlight matches while typing
-set ignorecase          " case insensitive during searches
-set smartcase           " be sensitive if there is capital letters
+set incsearch                   " highlight matches while typing
+set ignorecase                  " case insensitive during searches
+set smartcase                   " be sensitive if there is capital letters
 
-set expandtab           " replace tab with spaces
-set shiftwidth=4        " default shift width for indenting
-set softtabstop=4       " <TAB> and <BS> behaviors
-set tabstop=8           " width of <TAB> character
-set smarttab            " smarter tab levels
-set autoindent          " copy indentation of previous line
-set cindent             " C style indenting
+set expandtab                   " replace tab with spaces
+set shiftwidth=4                " default shift width for indenting
+set softtabstop=4               " <TAB> and <BS> behaviors
+set tabstop=8                   " width of <TAB> character
+set smarttab                    " smarter tab levels
+set autoindent                  " copy indentation of previous line
+set cindent                     " C style indenting
 set cinoptions+=g0.5s,h0.5s
 
-set nowritebackup       " no backup file right before writing to disk
-set nobackup            " no backup file
-set noswapfile          " no swap file
+set nowritebackup               " no backup file before writing to disk
+set nobackup                    " no backup file
+set noswapfile                  " no swap file
 
 if has('gui_running')
-    set autochdir       " auto change the current working dictory
+    set autochdir               " auto change the current working dictory
 endif
 
 " sane movement with wrap turned on
@@ -78,35 +79,38 @@ set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
-" my bundles
-Bundle 'scrooloose/nerdtree'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'ervandew/supertab'
+" Better status line
+Plugin 'bling/vim-airline'
 
-" Bundle 'techlivezheng/vim-plugin-minibufexpl'
-" cnoreabbrev mbd MBEbd
-" cnoreabbrev mbw MBEbw
-" cnoreabbrev mbun MBEbun
+" Fuzzy finder
+Plugin 'kien/ctrlp.vim'
 
-Bundle 'tomtom/tcomment_vim'
+" Simpler way to move inside a file
+Plugin 'Lokaltog/vim-easymotion'
+
+" Autocomplete with <Tab>
+Plugin 'ervandew/supertab'
+
+" Bindings to toggle comments
+Plugin 'tomtom/tcomment_vim'
 nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
 
-Bundle 'scrooloose/syntastic'
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'passive_filetypes': ['html'] }
+" Syntax checker
+Plugin 'scrooloose/syntastic'
 
-Bundle 'othree/html5.vim'
-Bundle 'mattn/emmet-vim'
+" Support for HTML5
+Plugin 'othree/html5.vim'
 
-Bundle 'altercation/vim-colors-solarized'
-if (&t_Co > 255 || has('gui_running'))
-    let g:solarized_termcolors=256
-    set bg=dark
-    colorscheme solarized
-endif
+" Zen coding
+Plugin 'mattn/emmet-vim'
+
+" Theme
+Plugin 'altercation/vim-colors-solarized'
+set background=dark
+colorscheme solarized
 
 filetype plugin indent on
 " }}} Vundle
