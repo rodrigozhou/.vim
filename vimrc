@@ -32,7 +32,7 @@ set linebreak                   " smart line break
 set showmatch                   " show matching bracket
 
 if exists('+colorcolumn')
-    set colorcolumn=81          " vertical line
+    set colorcolumn=81          " set vertical line if possible
 endif
 
 set incsearch                   " highlight matches while typing
