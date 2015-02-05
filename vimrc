@@ -75,11 +75,11 @@ nnoremap <silent> <Leader>/ :nohlsearch<CR>
 
 " Vundle {{{
 filetype off
-set runtimepath+=~/.vim/bundle/vundle/
+set runtimepath+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 " let Vundle manage Vundle
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " Better status line
 Plugin 'bling/vim-airline'
