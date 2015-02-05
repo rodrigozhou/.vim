@@ -110,7 +110,7 @@ Plugin 'mattn/emmet-vim'
 " Theme
 Plugin 'altercation/vim-colors-solarized'
 set background=dark
-colorscheme solarized
+silent! colorscheme solarized
 
 filetype plugin indent on
 " }}} Vundle
