@@ -86,9 +86,11 @@ Plugin 'bling/vim-airline'
 
 " Fuzzy finder
 Plugin 'kien/ctrlp.vim'
+let g:ctrlp_working_path_mode = 'ra'
 
 " Simpler way to move inside a file
 Plugin 'Lokaltog/vim-easymotion'
+let g:EasyMotion_smartcase = 1
 
 " Autocomplete with <Tab>
 Plugin 'ervandew/supertab'
@@ -100,6 +102,7 @@ vnoremap // :TComment<CR>
 
 " Syntax checker
 Plugin 'scrooloose/syntastic'
+let g:syntastic_check_on_wq = 0
 
 " Support for HTML5
 Plugin 'othree/html5.vim'
