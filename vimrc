@@ -31,10 +31,6 @@ set cursorline                  " highlight cursor line
 set linebreak                   " smart line break
 set showmatch                   " show matching bracket
 
-if exists('+colorcolumn')
-    set colorcolumn=81          " set vertical line if possible
-endif
-
 set incsearch                   " highlight matches while typing
 set ignorecase                  " case insensitive during searches
 set smartcase                   " be sensitive if there is capital letters
@@ -51,10 +47,6 @@ set cinoptions+=g0.5s,h0.5s
 set nowritebackup               " no backup file before writing to disk
 set nobackup                    " no backup file
 set noswapfile                  " no swap file
-
-if has('gui_running')
-    set autochdir               " auto change the current working dictory
-endif
 
 " sane movement with wrap turned on
 nnoremap j gj
@@ -83,6 +75,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Better status line
 Plugin 'bling/vim-airline'
+let g:airline_powerline_fonts=1
 
 " Fuzzy finder
 Plugin 'kien/ctrlp.vim'
@@ -111,6 +104,7 @@ Plugin 'othree/html5.vim'
 Plugin 'mattn/emmet-vim'
 
 " Theme
+" Solarized
 Plugin 'altercation/vim-colors-solarized'
 set background=dark
 silent! colorscheme solarized
