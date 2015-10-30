@@ -55,8 +55,8 @@ vnoremap j gj
 vnoremap k gk
 
 " alternative way to change buffers
-noremap <C-Tab>   :bn<CR>
-noremap <C-S-Tab> :bp<CR>
+nnoremap <C-Tab>   :bn<CR>
+nnoremap <C-S-Tab> :bp<CR>
 
 " reselect the visual selected block after indenting
 vnoremap < <gv
@@ -68,10 +68,10 @@ nnoremap <silent> <Leader>/ :nohlsearch<CR>
 " Vundle {{{
 filetype off
 set runtimepath+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " Better status line
 Plugin 'bling/vim-airline'
@@ -103,11 +103,6 @@ Plugin 'othree/html5.vim'
 " Zen coding
 Plugin 'mattn/emmet-vim'
 
-" Theme
-" Solarized
-Plugin 'altercation/vim-colors-solarized'
-set background=dark
-silent! colorscheme solarized
-
+call vundle#end()
 filetype plugin indent on
 " }}} Vundle
