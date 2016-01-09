@@ -4,6 +4,8 @@
 "
 " https://github.com/rodrigozhou/.vim
 
+runtime plugins.vim             " Vundle
+
 set nocompatible                " make vim vim
 set history=64
 set encoding=utf-8
@@ -17,7 +19,6 @@ endif
 syntax enable
 set showmode                    " show current mode
 set wildmenu                    " command-line completion
-set wildmode=longest,list,full
 set laststatus=2                " always show two status lines
 set splitbelow                  " default horizontal split to below
 set splitright                  " default vertical split to right
@@ -27,7 +28,6 @@ set diffopt=filler,vertical     " diff options
 set number                      " show line number
 set ruler                       " show current cursor position
 set showcmd                     " show incomplete commands
-set cursorline                  " highlight cursor line
 set linebreak                   " smart line break
 set showmatch                   " show matching bracket
 
@@ -44,6 +44,9 @@ set autoindent                  " copy indentation of previous line
 set cindent                     " C style indenting
 set cinoptions+=g0.5s,h0.5s
 
+" Custom settings for web development
+autocmd FileType html,css,javascript setl noet sw=2 sts=2 ts=2 nocin si
+
 set nowritebackup               " no backup file before writing to disk
 set nobackup                    " no backup file
 set noswapfile                  " no swap file
@@ -54,10 +57,6 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
-" alternative way to change buffers
-nnoremap <C-Tab>   :bn<CR>
-nnoremap <C-S-Tab> :bp<CR>
-
 " reselect the visual selected block after indenting
 vnoremap < <gv
 vnoremap > >gv
@@ -65,44 +64,12 @@ vnoremap > >gv
 " easy switch off the current search
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
 
-" Vundle {{{
-filetype off
-set runtimepath+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
-
-" let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
-
-" Better status line
-Plugin 'bling/vim-airline'
-let g:airline_powerline_fonts=1
-
-" Fuzzy finder
-Plugin 'kien/ctrlp.vim'
-let g:ctrlp_working_path_mode = 'ra'
-
-" Simpler way to move inside a file
-Plugin 'Lokaltog/vim-easymotion'
-let g:EasyMotion_smartcase = 1
-
-" Autocomplete with <Tab>
-Plugin 'ervandew/supertab'
-
-" Bindings to toggle comments
-Plugin 'tomtom/tcomment_vim'
-nnoremap // :TComment<CR>
-vnoremap // :TComment<CR>
-
-" Syntax checker
-Plugin 'scrooloose/syntastic'
-let g:syntastic_check_on_wq = 0
-
-" Support for HTML5
-Plugin 'othree/html5.vim'
-
-" Zen coding
-Plugin 'mattn/emmet-vim'
-
-call vundle#end()
-filetype plugin indent on
-" }}} Vundle
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
