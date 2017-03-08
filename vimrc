@@ -4,7 +4,7 @@
 "
 " https://github.com/rodrigozhou/.vim
 
-runtime plugins.vim             " Vundle
+runtime plugins.vim             " vim-plug
 
 set nocompatible                " make vim vim
 set history=64

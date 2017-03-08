@@ -1,6 +1,7 @@
 #!/bin/bash
 
 git clone https://github.com/rodrigozhou/.vim.git $HOME/.vim
-git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -s $HOME/.vim/vimrc $HOME/.vimrc
-vim +PluginInstall +qall
+vim +PlugInstall +qall
