@@ -5,12 +5,17 @@
 " https://github.com/rodrigozhou/.vim
 
 let mapleader = ','
+
+" load plugins
+runtime plugins.vim             " vim-plug
+
 set nocompatible                " make vim vim
 set history=128
 set encoding=utf-8
 set clipboard=unnamed           " use OS clipboard
 set backspace=indent,eol,start  " avoid backspace problems
-set background=light
+set background=dark
+colorscheme gruvbox8_hard
 
 set nowritebackup               " no backup file before writing to disk
 set nobackup                    " no backup file
@@ -52,10 +57,30 @@ set tabstop=8                   " width of <TAB> character
 set smarttab                    " smarter tab levels
 set autoindent                  " copy indentation of previous line
 set cindent                     " C style indenting
-set cinoptions+=g0.5s,h0.5s
+set cinoptions=l1,g0.5s,h0.5s,N-s,E-s,(s,U1,m1
+
+" fold settings
+function MyFoldText()
+    let nl = v:foldend - v:foldstart + 1
+    let line = getline(v:foldstart)
+    let txt = line . " ... (" . nl . " lines)"
+    return txt
+endfunction
+
+set foldmethod=syntax
+set foldcolumn=1
+set foldlevelstart=99
+set foldtext=MyFoldText()
+set foldopen-=block
+
+autocmd FileType python setl foldmethod=indent foldnestmax=2
+
+" fold colors
+highlight Folded        ctermbg=none
+highlight FoldColumn    ctermbg=none
 
 " no highlight line in quickkfix window
-highlight QuickFixLine  cterm=none ctermbg=256 guibg=#ffff00
+highlight QuickFixLine  cterm=none ctermbg=none guibg=#ffff00
 
 " clear background for sign column
 highlight clear SignColumn
@@ -63,12 +88,22 @@ highlight DiffAdd       cterm=bold ctermbg=none ctermfg=119
 highlight DiffDelete    cterm=bold ctermbg=none ctermfg=167
 highlight DiffChange    cterm=bold ctermbg=none ctermfg=227
 
+" make types bold
+highlight Type          cterm=bold
+
+" disable auto wrap
+autocmd FileType *      setl tw=0
+autocmd FileType text   setl tw=0 nocin
+
 " Custom settings for web development
 autocmd FileType html,css,javascript      setl noet sw=2 sts=2 ts=2 nocin si
 
 " Custom settings for tex projects
 autocmd FileType plaintex,tex,bib,bst,ist setl sw=2 sts=2 ts=4
 " let g:tex_flavor='tex'
+
+" reload all buffers
+command -bang E bufdo<bang> e
 
 " smooth scrolling
 map <ScrollWheelUp>   <C-y>
@@ -108,6 +143,7 @@ elseif executable('ag')
     set grepprg="ag --nogroup --nocolor"
     command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 endif
+nnoremap <C-g> :grep! "\b<C-r>=expand("<cword>")<CR>\b"<CR>:cw<CR>
 
 " TODO it does not work with python3 venv
 " python with virtualenv support
@@ -119,6 +155,3 @@ endif
 "     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
 "     execfile(activate_this, dict(__file__=activate_this))
 " EOF
-
-" load plugins
-runtime plugins.vim             " vim-plug

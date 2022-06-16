@@ -1,6 +1,8 @@
 " vim-plug {{{
 call plug#begin('~/.vim/plugged')
 
+Plug 'lifepillar/vim-gruvbox8'
+
 " Buffer tab line
 Plug 'ap/vim-buftabline'
 
@@ -14,6 +16,7 @@ let g:indentguides_toggleListMode=0
 
 " fzf
 Plug '/usr/local/opt/fzf'
+let g:fzf_layout = { 'down': '~30%' }
 nnoremap <C-p> :FZF<CR>
 
 " Simpler way to move inside a file
@@ -33,6 +36,23 @@ Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
 let g:syntastic_mode_map = { "mode": "passive" }
 nnoremap <silent> <F8> :SyntasticCheck<CR>
 nnoremap <silent> <F9> :SyntasticReset<CR>
+
+" code fmt
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+" augroup autoformat_settings
+"   autocmd FileType bzl AutoFormatBuffer buildifier
+"   autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+"   autocmd FileType dart AutoFormatBuffer dartfmt
+"   autocmd FileType go AutoFormatBuffer gofmt
+"   autocmd FileType gn AutoFormatBuffer gn
+"   autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+"   autocmd FileType java AutoFormatBuffer google-java-format
+"   autocmd FileType python AutoFormatBuffer yapf
+"   " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+"   autocmd FileType rust AutoFormatBuffer rustfmt
+"   autocmd FileType vue AutoFormatBuffer prettier
+" augroup END
 
 " cpp syntax
 Plug 'bfrg/vim-cpp-modern'
@@ -63,6 +83,7 @@ nmap <silent> <leader>oJ :FSSplitBelow<CR>
 
 " Python
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': ['python'] }
+Plug 'tmhedberg/SimpylFold', { 'for': ['python'] }
 
 " Support for HTML5
 Plug 'othree/html5.vim', { 'for': ['php', 'html'] }
